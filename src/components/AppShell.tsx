@@ -17,8 +17,15 @@ const TABS: { key: Tab; label: string }[] = [
   { key: "critique", label: "Critique" },
 ];
 
+const TAB_KEYS = new Set<Tab>(["briefing", "dashboard", "action", "history", "critique"]);
+function initialTab(): Tab {
+  if (typeof window === "undefined") return "briefing";
+  const t = new URLSearchParams(window.location.search).get("tab") as Tab | null;
+  return t && TAB_KEYS.has(t) ? t : "briefing";
+}
+
 export function AppShell() {
-  const [tab, setTab] = useState<Tab>("briefing");
+  const [tab, setTab] = useState<Tab>(initialTab);
   const [decisions, setDecisions] = useState<Record<string, Decision>>({});
   const [brief, setBrief] = useState<BriefData | null>(null);
   const [briefStatus, setBriefStatus] = useState<"loading" | "ready" | "error">("loading");

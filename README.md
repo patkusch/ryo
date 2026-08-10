@@ -29,6 +29,18 @@ against what the tills actually did. No busywork, no neutral dashboards, no thea
 > 🍵 Speaks like a calm, slightly dry Japanese sous-chef who *hates* waste.
 > **Ryo** (涼 *cool / refreshing* · 量 *measure*) — the two things a café runs on.
 
+<div align="center">
+
+![The Ryo Dashboard — backtest, prep sheet, forecast and charts](docs/dashboard.png)
+
+<sub>The **Dashboard** — honest backtest, next-day prep sheet, daypart forecast, and the charts.</sub>
+
+![The Ryo Agent — Monday briefing with ranked moves](docs/agent.png)
+
+<sub>The **Agent** — Monday briefing, the agent pipeline trace, and ranked moves.</sub>
+
+</div>
+
 ### 💚 Why it's different
 
 - 🎯 **Action, not insight** — every screen ends in something you can *do* today.
