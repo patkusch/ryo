@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Ryo — editorial dark. Warm charcoal, serif display, mono labels,   */
+/*  sage-green + periwinkle accents. Calm, precise, expensive.         */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-mono-geist), ui-monospace, "SF Mono", monospace;
+
+  --color-bg: #191a16;
+  --color-bg-deep: #121310;
+  --color-surface: #201f1c;
+  --color-panel: #22231e;
+  --color-line: #32332b;
+  --color-line-soft: #2a2b24;
+
+  --color-ink: #e9e9df;
+  --color-ink-dim: #bcbeb1;
+  --color-muted: #83867a;
+  --color-faint: #5c5f54;
+
+  /* accents */
+  --color-mint: #8fc79f;       /* serif italic accents */
+  --color-mint-bright: #6fb488; /* links, active underline */
+  --color-blue: #93a9dd;       /* percentages / iced share */
+  --color-clay: #cd8a62;       /* cut / waste risk */
+  --color-amber: #ccab68;      /* experiment / caution */
+
+  --color-matcha-100: #263024;
+  --color-matcha-200: #33422f;
+  --color-matcha-500: #6fb488;
+  --color-matcha-600: #8fc79f;
+  --color-matcha-700: #a9d6b5;
+}
+
+:root {
+  --background: var(--color-bg);
+  --foreground: var(--color-ink);
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  background-image:
+    radial-gradient(1200px 500px at 12% -8%, #6fb4881a, transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, #93a9dd12, transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Monospace micro-label — the signature detail */
+.label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  color: var(--color-muted);
+}
+
+.serif {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.hairline {
+  border-top: 1px solid var(--color-line);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 99px; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.rise-1 { animation-delay: 0.04s; }
+.rise-2 { animation-delay: 0.10s; }
+.rise-3 { animation-delay: 0.16s; }
+.rise-4 { animation-delay: 0.22s; }
+.rise-5 { animation-delay: 0.28s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+}
