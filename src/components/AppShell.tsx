@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { cafe, type Decision } from "@/lib/ryo";
+import { useCallback, useEffect, useState } from "react";
+import { cafe, type Decision, type BriefData } from "@/lib/ryo";
 import { Dashboard } from "./Dashboard";
 import { Briefing } from "./Briefing";
 import { ActionPack } from "./ActionPack";
@@ -20,6 +20,22 @@ const TABS: { key: Tab; label: string }[] = [
 export function AppShell() {
   const [tab, setTab] = useState<Tab>("briefing");
   const [decisions, setDecisions] = useState<Record<string, Decision>>({});
+  const [brief, setBrief] = useState<BriefData | null>(null);
+  const [briefStatus, setBriefStatus] = useState<"loading" | "ready" | "error">("loading");
+
+  // Run the multi-agent pipeline (Data → Insight → Action → Memory → Persona).
+  const runBrief = useCallback(async () => {
+    setBriefStatus("loading");
+    try {
+      const res = await fetch("/api/brief", { method: "POST" });
+      if (!res.ok) throw new Error("bad status");
+      setBrief((await res.json()) as BriefData);
+      setBriefStatus("ready");
+    } catch {
+      setBriefStatus("error");
+    }
+  }, []);
+  useEffect(() => { runBrief(); }, [runBrief]);
 
   // persist closed-loop decisions across reloads
   useEffect(() => {
@@ -45,6 +61,17 @@ export function AppShell() {
             <Whisk />
             <span className="serif text-xl tracking-tight">Ryo</span>
             <span className="label hidden sm:inline" style={{ color: "var(--color-faint)" }}>· {cafe.name}</span>
+            {brief && (
+              <span
+                className="label ml-1 hidden rounded-full border px-2 py-0.5 sm:inline"
+                title={brief.source === "claude" ? "Generated live by the Claude agent pipeline" : "Served from the deterministic fallback"}
+                style={brief.source === "claude"
+                  ? { color: "var(--color-mint)", borderColor: "#3a6b47" }
+                  : { color: "var(--color-muted)", borderColor: "var(--color-line)" }}
+              >
+                {brief.source === "claude" ? "● Live agents" : "○ Fallback"}
+              </span>
+            )}
           </button>
 
           <nav className="flex items-center gap-1">
@@ -67,9 +94,9 @@ export function AppShell() {
       </header>
 
       <main className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
-        {tab === "briefing" && <Briefing decisions={decisions} onDecide={decide} onExecute={() => setTab("action")} />}
+        {tab === "briefing" && <Briefing brief={brief} status={briefStatus} onReload={runBrief} decisions={decisions} onDecide={decide} onExecute={() => setTab("action")} />}
         {tab === "dashboard" && <Dashboard />}
-        {tab === "action" && <ActionPack decisions={decisions} />}
+        {tab === "action" && <ActionPack brief={brief} decisions={decisions} />}
         {tab === "history" && <Scorecard />}
         {tab === "critique" && <Critique />}
       </main>

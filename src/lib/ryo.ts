@@ -419,6 +419,23 @@ export interface StaffCard {
   metric: string;
 }
 
+// Shape returned by /api/brief (the multi-agent pipeline) — also the fallback shape.
+export interface TraceStep {
+  agent: string;
+  engine: "rules" | "claude";
+  ms: number;
+  note: string;
+}
+export interface BriefData {
+  source: "claude" | "fallback";
+  opinion: string;
+  moves: Move[];
+  staffCards: StaffCard[];
+  social: { caption: string; stories: string; visualDirection: string };
+  trace: TraceStep[];
+  generatedAt: string;
+}
+
 export const staffCards: StaffCard[] = [
   {
     title: "The one upsell that matters",
