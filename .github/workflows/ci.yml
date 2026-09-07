@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       # next build type-checks the app itself; no API key is needed because
       # the agent client falls back to the mock when ANTHROPIC_API_KEY is unset.
       - name: production build
