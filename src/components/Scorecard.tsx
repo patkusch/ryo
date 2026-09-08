@@ -12,7 +12,7 @@ export function Scorecard() {
           What I said, <em style={{ fontStyle: "italic", color: "var(--color-mint)" }}>what happened.</em>
         </h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[color:var(--color-ink-dim)]">
-          Every recommendation is scored against what the tills actually did. This is the part that isn't theatre — the model adjusts on its own misses, in the open.
+          Every recommendation is scored against what the tills actually did. This is the part that isn’t theatre — the model adjusts on its own misses, in the open.
         </p>
       </header>
 

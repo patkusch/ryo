@@ -31,23 +31,33 @@ export function AppShell() {
   const [briefStatus, setBriefStatus] = useState<"loading" | "ready" | "error">("loading");
 
   // Run the multi-agent pipeline (Data → Insight → Action → Memory → Persona).
-  const runBrief = useCallback(async () => {
-    setBriefStatus("loading");
-    try {
-      const res = await fetch("/api/brief", { method: "POST" });
-      if (!res.ok) throw new Error("bad status");
-      setBrief((await res.json()) as BriefData);
-      setBriefStatus("ready");
-    } catch {
-      setBriefStatus("error");
-    }
-  }, []);
+  // Fetch first, set state in the continuation: the mount effect must not call
+  // setState synchronously (react-hooks/set-state-in-effect), and it doesn't.
+  const runBrief = useCallback(
+    () =>
+      fetch("/api/brief", { method: "POST" })
+        .then(async (res) => {
+          if (!res.ok) throw new Error("bad status");
+          return (await res.json()) as BriefData;
+        })
+        .then(
+          (data) => {
+            setBrief(data);
+            setBriefStatus("ready");
+          },
+          () => setBriefStatus("error"),
+        ),
+    [],
+  );
   useEffect(() => { runBrief(); }, [runBrief]);
 
-  // persist closed-loop decisions across reloads
+  // persist closed-loop decisions across reloads. Read after mount, not in a
+  // lazy initialiser: the server render has no localStorage, and hydrating
+  // against a different initial state would mismatch.
   useEffect(() => {
     try {
       const raw = localStorage.getItem("ryo.decisions");
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off hydration of persisted state
       if (raw) setDecisions(JSON.parse(raw));
     } catch {}
   }, []);
@@ -111,7 +121,7 @@ export function AppShell() {
       <footer className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
         <div className="hairline mb-4" />
         <p className="label" style={{ color: "var(--color-faint)" }}>
-          Ryo · AI café operator · demo data · action &gt; insight · closed-loop or it's theatre
+          Ryo · AI café operator · demo data · action &gt; insight · closed-loop or it’s theatre
         </p>
       </footer>
     </div>

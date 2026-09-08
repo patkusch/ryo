@@ -25,7 +25,7 @@ export function ActionPack({ brief, decisions }: { brief: BriefData | null; deci
         <Label>Action pack · week of 10 Aug</Label>
         <h1 className="serif mt-3 text-4xl tracking-tight sm:text-5xl">Everything, prepped.</h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[color:var(--color-ink-dim)]">
-          One click turned this Monday's moves into a supplier order, staff cards, and the week's social. Print it, copy it, send it — then let the loop measure it.
+          One click turned this Monday’s moves into a supplier order, staff cards, and the week’s social. Print it, copy it, send it — then let the loop measure it.
         </p>
       </header>
 

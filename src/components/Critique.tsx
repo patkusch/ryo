@@ -33,7 +33,7 @@ export function Critique() {
           Show me the <em style={{ fontStyle: "italic", color: "var(--color-mint)" }}>case.</em>
         </h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[color:var(--color-ink-dim)]">
-          Photograph the pastry case or counter. I'll read the layout against this week's demand and tell you what's in the wrong place — with the velocity to prove it.
+          Photograph the pastry case or counter. I’ll read the layout against this week’s demand and tell you what’s in the wrong place — with the velocity to prove it.
         </p>
       </header>
 

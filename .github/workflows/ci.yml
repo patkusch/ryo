@@ -17,5 +17,7 @@ jobs:
       - run: npm install --no-audit --no-fund
       # next build type-checks the app itself; no API key is needed because
       # the agent client falls back to the mock when ANTHROPIC_API_KEY is unset.
+      - name: lint
+        run: npm run lint
       - name: production build
         run: npm run build

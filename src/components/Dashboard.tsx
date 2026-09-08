@@ -47,7 +47,7 @@ export function Dashboard() {
             <span className="text-[color:var(--color-ink-dim)]">{weather.summary}</span>
           </div>
           <div className="mt-1 text-sm text-[color:var(--color-muted)]">
-            Iced drinks lift ~{weather.icedLiftPct}%, hot drinks drag {weather.hotDragPct}% — fitted from this shop's own history.
+            Iced drinks lift ~{weather.icedLiftPct}%, hot drinks drag {weather.hotDragPct}% — fitted from this shop’s own history.
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export function Dashboard() {
             eyebrow="Demand shape"
             title="Revenue by weekday"
             right={<Label>mean daily revenue</Label>}
-            caption={<><strong className="font-semibold text-[color:var(--color-ink)]">Thursday and Tuesday</strong> carry the week — 29% and 24% above the {gbp(weekdayRevenue.average)} Mon–Sat average. That's an anchor-day office pattern, not noise: model it as a fixed shape rather than smoothing it away.</>}
+            caption={<><strong className="font-semibold text-[color:var(--color-ink)]">Thursday and Tuesday</strong> carry the week — 29% and 24% above the {gbp(weekdayRevenue.average)} Mon–Sat average. That’s an anchor-day office pattern, not noise: model it as a fixed shape rather than smoothing it away.</>}
           >
             <BarChart data={weekdayRevenue.days} average={weekdayRevenue.average} />
           </ChartFrame>
@@ -276,7 +276,7 @@ function ForwardRisk() {
       <div className="px-6 pb-6">
         <Label>Annualised</Label>
         <div className="serif tnum mt-1 text-3xl" style={{ color: "var(--color-clay)" }}>−{gbp(Math.abs(r.annualised))}</div>
-        <div className="mt-1 text-sm text-[color:var(--color-muted)]">{r.retained}% of today's contribution retained</div>
+        <div className="mt-1 text-sm text-[color:var(--color-muted)]">{r.retained}% of today’s contribution retained</div>
       </div>
       <div className="border-t px-6 py-4 text-sm leading-relaxed text-[color:var(--color-ink-dim)]">{r.note}</div>
     </div>

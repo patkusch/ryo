@@ -81,7 +81,7 @@ export function Briefing({
       <div className="hairline my-6" />
 
       <div className="mb-4 flex items-center justify-between">
-        <Label>This Monday's moves · ranked</Label>
+        <Label>This Monday’s moves · ranked</Label>
         <Label>{loading ? "reasoning…" : `${pending} pending decision${pending === 1 ? "" : "s"}`}</Label>
       </div>
 
