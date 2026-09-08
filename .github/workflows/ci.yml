@@ -21,3 +21,7 @@ jobs:
         run: npm run lint
       - name: production build
         run: npm run build
+      # After the build, because Next generates the LayoutProps/PageProps globals
+      # into .next/types; a standalone tsc before that fails on them.
+      - name: typecheck
+        run: npx tsc --noEmit
