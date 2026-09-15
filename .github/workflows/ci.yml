@@ -19,9 +19,9 @@ jobs:
       # the agent client falls back to the mock when ANTHROPIC_API_KEY is unset.
       - name: lint
         run: npm run lint
+      # Standalone: next typegen writes the LayoutProps/PageProps globals into
+      # .next/types, then tsc checks the whole project without a build.
+      - name: typecheck
+        run: npm run typecheck
       - name: production build
         run: npm run build
-      # After the build, because Next generates the LayoutProps/PageProps globals
-      # into .next/types; a standalone tsc before that fails on them.
-      - name: typecheck
-        run: npx tsc --noEmit
