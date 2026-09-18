@@ -10,8 +10,8 @@
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind v4](https://img.shields.io/badge/Tailwind-v4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Powered by Claude](https://img.shields.io/badge/agents-Claude%20Opus%205-6B8E4E?logo=anthropic&logoColor=white)](#-the-agent-pipeline)
-[![Charts: zero-dependency SVG](https://img.shields.io/badge/Charts-hand--built%20SVG-6B8E4E)](#-the-dashboard)
-[![Closed-loop or it's theatre](https://img.shields.io/badge/Closed--loop%20or%20it's-theatre-1c211a)](#-the-closed-loop)
+[![Charts: zero-dependency SVG](https://img.shields.io/badge/Charts-hand--built%20SVG-6B8E4E)](#-five-screens)
+[![Closed-loop or it's theatre](https://img.shields.io/badge/Closed--loop%20or%20it's-theatre-1c211a)](#-five-screens)
 
 </div>
 
