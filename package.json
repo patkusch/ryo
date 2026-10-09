@@ -1,6 +1,11 @@
 {
   "name": "ryo",
   "version": "0.1.0",
+  "author": "patkusch",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/patkusch/ryo.git" },
+  "homepage": "https://github.com/patkusch/ryo#readme",
+  "bugs": { "url": "https://github.com/patkusch/ryo/issues" },
   "private": true,
   "scripts": {
     "dev": "next dev",
