@@ -6,6 +6,7 @@
 
 *Your Monday, already handled.*
 
+[![ci](https://github.com/patkusch/ryo/actions/workflows/ci.yml/badge.svg)](https://github.com/patkusch/ryo/actions/workflows/ci.yml)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind v4](https://img.shields.io/badge/Tailwind-v4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
