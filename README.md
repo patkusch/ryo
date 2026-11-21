@@ -170,3 +170,7 @@ src/
 ---
 
 *Built fast, built to demo. 🍵*
+
+---
+
+[Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [Security policy](SECURITY.md)
